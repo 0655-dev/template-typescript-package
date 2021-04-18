@@ -1,7 +1,9 @@
 importers:
+  .:
+    specifiers: {}
   packages/empty-package:
     devDependencies:
-      '@0655-dev/template-typescript-package': link:../typescript-package-template
+      '@0655-dev/template-typescript-package': link:../template-typescript-package
       '@types/jest': 26.0.19
       '@typescript-eslint/eslint-plugin': 4.1.0_637052761c579cfb817aa4c8f9fcf8e9
       '@typescript-eslint/parser': 4.1.0_eslint@7.24.0+typescript@4.2.4
@@ -14,18 +16,9 @@ importers:
       '@typescript-eslint/parser': 4.1.0
       eslint: 7.24.0
       typescript: 4.2.4
-  packages/example:
-    devDependencies:
-      '@0655-dev/template-typescript-package': link:../typescript-package-template
-      '@types/jest': 26.0.22
-      typescript: 4.2.4
-    specifiers:
-      '@0655-dev/template-typescript-package': workspace:*
-      '@types/jest': ^26.0.19
-      typescript: ^4.2.4
   packages/example-package:
     devDependencies:
-      '@0655-dev/template-typescript-package': link:../typescript-package-template
+      '@0655-dev/template-typescript-package': link:../template-typescript-package
       '@types/jest': 26.0.19
       '@typescript-eslint/eslint-plugin': 4.1.0_637052761c579cfb817aa4c8f9fcf8e9
       '@typescript-eslint/parser': 4.1.0_eslint@7.24.0+typescript@4.2.4
@@ -38,6 +31,8 @@ importers:
       '@typescript-eslint/parser': 4.1.0
       eslint: 7.24.0
       typescript: 4.2.4
+  packages/template-typescript-package:
+    specifiers: {}
 lockfileVersion: 5.2
 packages:
   /@babel/code-frame/7.12.11:
@@ -133,13 +128,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-jqHoirTG61fee6v6rwbnEuKhpSKih0tuhqeFbCmMmErhtu3BYlOZaXWjffgOstMM4S/3iQD31lI5bGLTrs97yQ==
-  /@types/jest/26.0.22:
-    dependencies:
-      jest-diff: 26.6.2
-      pretty-format: 26.6.2
-    dev: true
-    resolution:
-      integrity: sha512-eeWwWjlqxvBxc4oQdkueW5OF/gtfSceKk4OnOAGlUSwS/liBRtZppbJuz1YkgbrbfGOoeBHun9fOvXnjNwrSOw==
   /@types/json-schema/7.0.7:
     dev: true
     resolution:
