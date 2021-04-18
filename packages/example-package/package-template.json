@@ -3,8 +3,7 @@
 	"version": "1.0.0",
 	"private": true,
 	"files": [
-		"dist",
-		"shrinkwrap.yaml"
+		"dist"
 	],
 	"main": "dist/index.js",
 	"dependencies": {

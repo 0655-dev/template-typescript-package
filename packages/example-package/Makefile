@@ -89,3 +89,19 @@ test: \
 	test-integration-tests
 
 ##
+##
+##	PUBLISH
+##	-----------------
+##
+
+##	make publish-check 	- dry run publish - show what files will be published
+##
+publish-check: setup build
+	@ $(SCRIPTS)/package-check-publish.sh
+
+##	make publish 	- publish the package
+##
+publish: setup build
+	@ $(SCRIPTS)/package-publish.sh
+
+##
