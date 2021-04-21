@@ -69,11 +69,42 @@ test-typescript: setup build
 
 ##	make test-unit-tests 	- run unit tests
 ##
-test-unit-tests: setup build
+test-unit-tests: \
+	test-mocha-unit-tests \
+	test-jest-unit-tests
+
+
+test-mocha-unit-tests: setup build
+	@ $(SCRIPTS)/package-test-mocha-unit-tests.sh
+
+test-jest-unit-tests: setup build
+	@ $(SCRIPTS)/package-test-jest-unit-tests.sh
 
 ##	make test-integration-tests 	- run integration test cases
 ##
-test-integration-tests: setup build
+test-integration-tests: \
+	test-mocha-integration-tests \
+	test-jest-integration-tests
+
+test-mocha-integration-tests: setup build
+	@ $(SCRIPTS)/package-test-mocha-integration-tests.sh
+
+test-jest-integration-tests: setup build
+	@ $(SCRIPTS)/package-test-jest-integration-tests.sh
+
+
+##	make test-mocha 	- run the mocha test cases (if using mocha)
+##
+test-mocha: \
+	test-mocha-unit-tests \
+	test-mocha-integration-tests
+
+##	make test-jest 	- run the jest test cases (if using jest)
+##
+test-jest: \
+	test-jest-unit-tests \
+	test-jest-integration-tests
+
 
 ##	make test-eslint 	- run the eslint test cases
 ##

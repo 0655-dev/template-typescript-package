@@ -12,13 +12,15 @@
 # https://sipb.mit.edu/doc/safe-shell/
 set -euf -o pipefail
 
-ROOT_DIR=.
-SRC_DIR=$ROOT_DIR/src
-DIST_DIR=$ROOT_DIR/dist
+# import other vars from the package config
+PACKAGE_ROOT=.
+PACKAGE_CONFIG=$PACKAGE_ROOT/package-config.sh
+source $PACKAGE_CONFIG
 
-# eslint-wrapper --help
+if [ "$PACKAGE_USE_ESLINT" = false ]; then exit 0; fi
 
-ESLINTRC=$ROOT_DIR/.eslintrc.js
+if [ -z "$PACKAGE_SRC" ]; then echo "[ERROR] PACKAGE_SRC var is not set"; exit 1; fi
+if [ -z "$PACKAGE_ESLINTRC" ]; then echo "[ERROR] PACKAGE_ESLINTRC var is not set"; exit 1; fi
 
 echo ""
 echo "[INFO] running eslint against source code"
@@ -30,7 +32,7 @@ echo "[INFO] running eslint against source code"
 
 ( \
 	find \
-		$SRC_DIR \
+		$PACKAGE_SRC \
 		\( -type f -and -name "*.js" \) -or \
 		\( -type f -and -name "*.jsx" \) -or \
 		\( -type f -and -name "*.ts" \) -or \
@@ -46,7 +48,7 @@ echo "[INFO] running eslint against source code"
 	xargs \
 		pnpx eslint \
 			--quiet \
-			--config="$ESLINTRC" \
+			--config="$PACKAGE_ESLINTRC" \
 )
 
 echo "[INFO] eslint checks passed!"

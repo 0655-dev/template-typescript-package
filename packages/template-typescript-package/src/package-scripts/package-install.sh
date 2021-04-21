@@ -12,8 +12,21 @@
 # https://sipb.mit.edu/doc/safe-shell/
 set -euf -o pipefail
 
-ROOT_DIR=.
-SRC_DIR=$ROOT_DIR/src
-DIST_DIR=$ROOT_DIR/dist
+# import other vars from the package config
+PACKAGE_ROOT=.
+PACKAGE_CONFIG=$PACKAGE_ROOT/package-config.sh
+source $PACKAGE_CONFIG
 
-pnpm install --filter $ROOT_DIR
+_check_env () {
+	for tool in "$@"
+	do
+		if ! [ -x "$(command -v $tool)" ]; then
+			echo "[ERROR] $tool not found, aborting..." >&2
+			exit 1
+		fi
+	done
+}
+
+_check_env pnpm;
+
+pnpm install --filter $PACKAGE_ROOT

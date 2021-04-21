@@ -12,15 +12,19 @@
 # https://sipb.mit.edu/doc/safe-shell/
 set -euf -o pipefail
 
-ROOT_DIR=.
-SRC_DIR=$ROOT_DIR/src
-DIST_DIR=$ROOT_DIR/dist
+# import other vars from the package config
+PACKAGE_ROOT=.
+PACKAGE_CONFIG=$PACKAGE_ROOT/package-config.sh
+source $PACKAGE_CONFIG
 
-SCRIPTS_DIR=$ROOT_DIR/package-scripts
-SOURCE_MAP=$ROOT_DIR/.sourcemap
 
 echo ""
 echo "[INFO] starting package build";
+
+if [ -z "$PACKAGE_SRC" ]; then echo "[ERROR] PACKAGE_SRC var is not set"; exit 1; fi
+if [ -z "$PACKAGE_DIST" ]; then echo "[ERROR] PACKAGE_DIST var is not set"; exit 1; fi
+if [ -z "$PACKAGE_SCRIPTS" ]; then echo "[ERROR] PACKAGE_SCRIPTS var is not set"; exit 1; fi
+if [ -z "$PACKAGE_SOURCE_MAP" ]; then echo "[ERROR] PACKAGE_SOURCE_MAP var is not set"; exit 1; fi
 
 _check_env () {
 	for tool in "$@"
@@ -35,7 +39,7 @@ _check_env () {
 _check_env pnpx rsync mktemp;
 
 # load source_hash function
-source $SCRIPTS_DIR/source-hash.sh
+source $PACKAGE_SCRIPTS/source-hash.sh
 
 echo "[INFO] starting build check"
 
@@ -47,15 +51,15 @@ SHOULD_REBUILD=1
 
 _MAKE_SOURCE_HASH() {
 	echo "[INFO] calculating source hash";
-	SOURCE_HASH=$(source_hash $SOURCE_MAP)
+	SOURCE_HASH=$(source_hash $PACKAGE_SOURCE_MAP)
 	echo "[INFO] source hash $SOURCE_HASH";
 }
 
 _CHECK_SOURCE_HASH() {
 	echo "[INFO] verifying source hash against build";
-	if [ -f $DIST_DIR/$SOURCE_HASH_FILE ]
+	if [ -f $PACKAGE_DIST/$SOURCE_HASH_FILE ]
 	then
-		DIST_SOURCE_HASH=$(cat $DIST_DIR/$SOURCE_HASH_FILE);
+		DIST_SOURCE_HASH=$(cat $PACKAGE_DIST/$SOURCE_HASH_FILE);
 		# echo "dist source hash $DIST_SOURCE_HASH";
 		if [ "$SOURCE_HASH" == "$DIST_SOURCE_HASH" ]
 		then
@@ -107,7 +111,7 @@ _COPY_ASSETS () {
 		--exclude='*.ts' \
 		--exclude='*.tsx' \
 		--include='*' \
-		$SRC_DIR/ \
+		$PACKAGE_SRC/ \
 		$BUILD_DIR
 		# --itemize-changes \
 }
@@ -128,7 +132,7 @@ _WRITE_BUILD_TO_DIST () {
 		--exclude='temp' \
 		--delete \
 		$BUILD_DIR/ \
-		$DIST_DIR
+		$PACKAGE_DIST
 		# --itemize-changes \
 }
 

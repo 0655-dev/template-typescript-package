@@ -12,11 +12,9 @@
 # https://sipb.mit.edu/doc/safe-shell/
 set -euf -o pipefail
 
-ROOT_DIR=.
-SRC_DIR=$ROOT_DIR/src
-DIST_DIR=$ROOT_DIR/dist
-
-SCRIPTS_DIR=$ROOT_DIR/package-scripts
-SOURCE_MAP=$ROOT_DIR/.sourcemap
+# import other vars from the package config
+PACKAGE_ROOT=.
+PACKAGE_CONFIG=$PACKAGE_ROOT/package-config.sh
+source $PACKAGE_CONFIG
 
 pnpm publish

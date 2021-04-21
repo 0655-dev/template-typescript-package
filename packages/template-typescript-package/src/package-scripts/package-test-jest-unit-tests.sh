@@ -17,16 +17,12 @@ PACKAGE_ROOT=.
 PACKAGE_CONFIG=$PACKAGE_ROOT/package-config.sh
 source $PACKAGE_CONFIG
 
-_check_env () {
-	for tool in "$@"
-	do
-		if ! [ -x "$(command -v $tool)" ]; then
-			echo "[ERROR] $tool not found, aborting..." >&2
-			exit 1
-		fi
-	done
-}
+if [ "$PACKAGE_USE_JEST" = false ]; then exit 0; fi
 
-_check_env pnpm;
+echo ""
+echo "[INFO] running jest tests"
 
-pnpm install --filter $PACKAGE_ROOT
+pnpx jest --roots $PACKAGE_DIST --testRegex="((/__tests__/.*|(\\.|/)(spec))\\.[jt]sx?)|((/__tests__/.*|(\\.|/)(spec))/index\\.[jt]sx?)$"
+
+echo "[INFO] jest unit tests passed!"
+echo ""

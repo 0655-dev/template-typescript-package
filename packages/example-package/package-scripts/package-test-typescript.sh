@@ -12,10 +12,10 @@
 # https://sipb.mit.edu/doc/safe-shell/
 set -euf -o pipefail
 
-
-PACKAGE_ROOT="."
-SRC_DIR="$PACKAGE_ROOT/src"
-DIST_DIR="$PACKAGE_ROOT/dist"
+# import other vars from the package config
+PACKAGE_ROOT=.
+PACKAGE_CONFIG=$PACKAGE_ROOT/package-config.sh
+source $PACKAGE_CONFIG
 
 echo ""
 echo "[INFO] starting typescript test"
@@ -35,7 +35,7 @@ COPY_ASSETS_TO_BUILD_DIR () {
 		--exclude='*.ts' \
 		--exclude='*.tsx' \
 		--include='*' \
-		$SRC_DIR/ \
+		$PACKAGE_SRC/ \
 		"$BUILD_DIR"
 	echo "[INFO] done";
 }
