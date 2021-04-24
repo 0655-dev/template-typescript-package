@@ -75,10 +75,10 @@ test-unit-tests: \
 
 
 test-mocha-unit-tests: setup build
-	@ $(SCRIPTS)/package-test-mocha-unit-tests.sh
+	@ MOCHA="$(MOCHA)" $(SCRIPTS)/package-test-mocha-unit-tests.sh
 
 test-jest-unit-tests: setup build
-	@ $(SCRIPTS)/package-test-jest-unit-tests.sh
+	@ JEST="$(JEST)" $(SCRIPTS)/package-test-jest-unit-tests.sh
 
 ##	make test-integration-tests 	- run integration test cases
 ##
@@ -87,10 +87,10 @@ test-integration-tests: \
 	test-jest-integration-tests
 
 test-mocha-integration-tests: setup build
-	@ $(SCRIPTS)/package-test-mocha-integration-tests.sh
+	@ MOCHA="$(MOCHA)" $(SCRIPTS)/package-test-mocha-integration-tests.sh
 
 test-jest-integration-tests: setup build
-	@ $(SCRIPTS)/package-test-jest-integration-tests.sh
+	@ JEST="$(JEST)" $(SCRIPTS)/package-test-jest-integration-tests.sh
 
 
 ##	make test-mocha 	- run the mocha test cases (if using mocha)

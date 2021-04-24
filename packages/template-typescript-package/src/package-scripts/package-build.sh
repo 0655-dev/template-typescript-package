@@ -17,9 +17,10 @@ PACKAGE_ROOT=.
 PACKAGE_CONFIG=$PACKAGE_ROOT/package-config.sh
 source $PACKAGE_CONFIG
 
+SCRIPT_START=`date +%s`
 
 echo ""
-echo "[INFO] starting package build";
+echo "[INFO] starting package build for $PACKAGE_NAME";
 
 if [ -z "$PACKAGE_SRC" ]; then echo "[ERROR] PACKAGE_SRC var is not set"; exit 1; fi
 if [ -z "$PACKAGE_DIST" ]; then echo "[ERROR] PACKAGE_DIST var is not set"; exit 1; fi
@@ -153,7 +154,9 @@ then
 	_BUILD_TS
 	_BUILD_EXTRAS
 	_WRITE_BUILD_TO_DIST
-	echo "[INFO] build for finished!"
+	SCRIPT_END=`date +%s`
+	SCRIPT_RUNTIME=$((SCRIPT_END-SCRIPT_START))
+	echo "[INFO] build for $PACKAGE_NAME finished in ${SCRIPT_RUNTIME}s"
 	echo ""
 else
 	echo "[INFO] build is up-to-date, exiting"

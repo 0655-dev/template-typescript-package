@@ -24,10 +24,12 @@ PACKAGE_TASKS=$PACKGE_ROOT/package-scripts
 
 XARGS=$PACKAGE_TASKS/xargs-compat.sh
 
+SCRIPT_START=`date +%s`
+
 if [ "$PACKAGE_USE_MOCHA" = false ]; then exit 0; fi
 
 echo ""
-echo "[INFO] running mocha integration tests"
+echo "[INFO] running mocha integration tests for $PACKAGE_NAME"
 
 
 ( \
@@ -44,8 +46,11 @@ echo "[INFO] running mocha integration tests"
 		--key=2.1 \
 	| \
 	$XARGS -r \
-		pnpx mocha
+		pnpx mocha $PACKAGE_MOCHA_ARGS $MOCHA
 )
 
-echo "[INFO] mocha integration tests passed!"
+SCRIPT_END=`date +%s`
+SCRIPT_RUNTIME=$((SCRIPT_END-SCRIPT_START))
+
+echo "[INFO] mocha integration tests for $PACKAGE_NAME finished in ${SCRIPT_RUNTIME}s"
 echo ""

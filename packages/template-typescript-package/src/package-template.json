@@ -21,7 +21,7 @@
 	"scripts": {
 		"setup": "make setup",
 		"build": "make build",
-		"test": "make test",
+		"test": "make test MOCHA=\"$MOCHA\" JEST=\"$JEST\"",
 		"clean": "make clean"
 	}
 }

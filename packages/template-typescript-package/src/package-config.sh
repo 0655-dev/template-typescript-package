@@ -7,6 +7,7 @@
 
 # the current directory is assumed to be the package root by all scripts
 PACKAGE_ROOT=.
+PACKAGE_NAME=package
 PACKAGE_CONFIG=$PACKAGE_ROOT/package-config.sh
 PACKAGE_EXTRAS=$PACKAGE_ROOT/package-config.extras.sh
 
@@ -19,14 +20,15 @@ PACKAGE_SOURCE_MAP=$PACKAGE_ROOT/.sourcemap
 
 
 
-# this flag is used to enable or disable mocha testing
-PACKAGE_USE_MOCHA=true
+PACKAGE_USE_MOCHA=true	# this flag is used to enable or disable mocha testing
+PACKAGE_MOCHA_ARGS=	# this variable can be used to set default parameters to always be passed to mocha 
+MOCHA= # this variable can be used to pass parameters to mocha at invocation
 
-# this flag is used to enable or disable jest testing
-PACKAGE_USE_JEST=true
+PACKAGE_USE_JEST=true	# this flag is used to enable or disable jest testing
+PACKAGE_JEST_ARGS=	# this variable can be used to set default parameters to be passed to jest 
+JEST= # this variable can be used to pass parameters to mocha at invocation
 
-# this flag is used to enable or disable eslint testing
-PACKAGE_USE_ESLINT=true
+PACKAGE_USE_ESLINT=true	# this flag is used to enable or disable eslint testing
 PACKAGE_ESLINTRC=$PACKAGE_ROOT/.eslintrc.js
 
 source $PACKAGE_EXTRAS

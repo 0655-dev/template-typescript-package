@@ -17,12 +17,21 @@ PACKAGE_ROOT=.
 PACKAGE_CONFIG=$PACKAGE_ROOT/package-config.sh
 source $PACKAGE_CONFIG
 
+SCRIPT_START=`date +%s`
+
 if [ "$PACKAGE_USE_JEST" = false ]; then exit 0; fi
 
 echo ""
-echo "[INFO] running jest tests"
+echo "[INFO] running jest tests for $PACKAGE_NAME"
 
-pnpx jest --roots $PACKAGE_DIST --testRegex="((/__tests__/.*|(\\.|/)(spec))\\.[jt]sx?)|((/__tests__/.*|(\\.|/)(spec))/index\\.[jt]sx?)$"
+pnpx jest \
+	--roots $PACKAGE_DIST \
+	--testRegex="((/__tests__/.*|(\\.|/)(spec))\\.[jt]sx?)|((/__tests__/.*|(\\.|/)(spec))/index\\.[jt]sx?)$" \
+	$PACKAGE_JEST_ARGS \
+	$JEST
 
-echo "[INFO] jest unit tests passed!"
+SCRIPT_END=`date +%s`
+SCRIPT_RUNTIME=$((SCRIPT_END-SCRIPT_START))
+
+echo "[INFO] jest unit tests for $PACKAGE_NAME finished in ${SCRIPT_RUNTIME}s"
 echo ""

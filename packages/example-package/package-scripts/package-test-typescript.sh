@@ -17,8 +17,10 @@ PACKAGE_ROOT=.
 PACKAGE_CONFIG=$PACKAGE_ROOT/package-config.sh
 source $PACKAGE_CONFIG
 
+SCRIPT_START=`date +%s`
+
 echo ""
-echo "[INFO] starting typescript test"
+echo "[INFO] running typescript build checks for $PACKAGE_NAME"
 
 CREATE_BUILD_DIR () {
 	echo "[INFO] creating build dir...";
@@ -64,6 +66,9 @@ BUILD () {
 	CREATE_BUILD_DIR;
 	COPY_ASSETS_TO_BUILD_DIR;
 	BUILD_TS;
+	SCRIPT_END=`date +%s`
+	SCRIPT_RUNTIME=$((SCRIPT_END-SCRIPT_START))
+	echo "[INFO] typescript build test for $PACKAGE_NAME finished in ${SCRIPT_RUNTIME}s"
 }
 
 BUILD;

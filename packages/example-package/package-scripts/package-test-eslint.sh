@@ -17,13 +17,15 @@ PACKAGE_ROOT=.
 PACKAGE_CONFIG=$PACKAGE_ROOT/package-config.sh
 source $PACKAGE_CONFIG
 
+SCRIPT_START=`date +%s`
+
 if [ "$PACKAGE_USE_ESLINT" = false ]; then exit 0; fi
 
 if [ -z "$PACKAGE_SRC" ]; then echo "[ERROR] PACKAGE_SRC var is not set"; exit 1; fi
 if [ -z "$PACKAGE_ESLINTRC" ]; then echo "[ERROR] PACKAGE_ESLINTRC var is not set"; exit 1; fi
 
 echo ""
-echo "[INFO] running eslint against source code"
+echo "[INFO] running eslint against source code for $PACKAGE_NAME"
 
 # eslint sometimes misses some files
 # so, instead we use find to find all matching files,
@@ -51,5 +53,8 @@ echo "[INFO] running eslint against source code"
 			--config="$PACKAGE_ESLINTRC" \
 )
 
-echo "[INFO] eslint checks passed!"
+SCRIPT_END=`date +%s`
+SCRIPT_RUNTIME=$((SCRIPT_END-SCRIPT_START))
+
+echo "[INFO] eslint checks for $PACKAGE_NAME finished in ${SCRIPT_RUNTIME}s"
 echo ""
