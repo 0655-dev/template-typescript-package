@@ -29,3 +29,6 @@ install:
 	pnpm install
 
 
+test: install
+	cd ./packages/example-package && make test
+	cd ./packages/empty-package && ./package-bootstrap.sh && make test
