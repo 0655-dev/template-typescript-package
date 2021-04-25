@@ -8,7 +8,6 @@ rm -rf ./dist && mkdir ./dist;
 
 cp ./package-bootstrap.sh ./dist/;
 
-(cd ./dist && ./package-bootstrap.sh);
-(cd ./dist && make test);
+(cd ./dist && ./package-bootstrap.sh && CI='' make test);
 
 rm -rf ./dist;
