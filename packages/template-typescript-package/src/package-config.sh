@@ -22,11 +22,11 @@ PACKAGE_SOURCE_MAP=$PACKAGE_ROOT/.sourcemap
 
 PACKAGE_USE_MOCHA=true	# this flag is used to enable or disable mocha testing
 PACKAGE_MOCHA_ARGS=	# this variable can be used to set default parameters to always be passed to mocha 
-MOCHA= # this variable can be used to pass parameters to mocha at invocation
+MOCHA="${MOCHA:-}" # this variable can be used to pass parameters to mocha at invocation
 
 PACKAGE_USE_JEST=true	# this flag is used to enable or disable jest testing
 PACKAGE_JEST_ARGS=	# this variable can be used to set default parameters to be passed to jest 
-JEST= # this variable can be used to pass parameters to mocha at invocation
+JEST="${JEST:-}" # this variable can be used to pass parameters to mocha at invocation
 
 PACKAGE_USE_ESLINT=true	# this flag is used to enable or disable eslint testing
 PACKAGE_ESLINTRC=$PACKAGE_ROOT/.eslintrc.js
