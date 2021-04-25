@@ -12,6 +12,11 @@
 # https://sipb.mit.edu/doc/safe-shell/
 set -euf -o pipefail
 
+# import other vars from the package config
+PACKAGE_ROOT=.
+PACKAGE_TASKS=$PACKAGE_ROOT/package-scripts
+
+MD5=$PACKAGE_TASKS/md5sum-compat.sh
 
 _check_env () {
 	for tool in "$@"
@@ -23,7 +28,7 @@ _check_env () {
 	done
 }
 
-_check_env xargs cat sed sort md5sum;
+_check_env xargs cat sed sort;
 
 
 _source_map () {
@@ -67,9 +72,9 @@ _source_map () {
 source_hash () {
 	_source_map $1 | \
 	xargs \
-		md5sum  \
+		$MD5  \
 	| \
-	md5sum
+	$MD5
 }
 
 
