@@ -1,6 +1,6 @@
 
 # INFO: this file is auto-generated from a template by default,
-# any changes you make in here will persist
+# but any changes you make in here will persist
 
 # use this to set the package name
 # PACKAGE_NAME=package
