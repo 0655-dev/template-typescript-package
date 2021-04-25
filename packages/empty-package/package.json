@@ -9,6 +9,6 @@
 	"devDependencies": {
 	},
 	"scripts": {
-		"test": "rm -rf ./dist && mkdir ./dist && cp ./package-bootstrap.sh ./dist/ && cd ./dist && ./package-bootstrap.sh && make test"
+		"test": "./package-test.sh"
 	}
 }
