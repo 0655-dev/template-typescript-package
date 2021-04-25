@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# WARNING: this package is auto-generated from a template
+# WARNING: this package is a controlled file generated from a template
 # do not try to make changes in here, they will be overwritten
 
 #
@@ -22,7 +22,7 @@ TEMPLATE_SRC_DEFAULT="$NODE_MODULES/@0655-dev/template-typescript-package/src-de
 IS_NEW_PACKAGE=false
 
 echo ""
-echo "[INFO] starting package bootstrap"
+echo "[INFO] starting package init"
 
 # check for rsync
 if [ ! command -v rsync &> /dev/null ]; then
@@ -52,7 +52,7 @@ else
 	echo "[INFO] package manifest found"
 fi
 
-# if node_modules isn't set up, we can't bootstrap the package
+# if node_modules isn't set up, we can't init the package
 if [ ! -d "${NODE_MODULES}" ]; then
 	echo "[INFO] installing packages"
 	pnpm install --filter $ROOT_DIR
@@ -61,7 +61,7 @@ else
 	echo "[INFO] node_modules found"
 fi
 
-# if the package ins't isn't set up, we can't bootstrap the package
+# if the package ins't isn't set up, we can't init the package
 if [ ! -d "${TEMPLATE_SRC}" ]; then
 	echo "[INFO] installing template package"
 	pnpm install --save "${TEMPLATE_PACKAGE_NAME}@*" --filter $ROOT_DIR
@@ -104,5 +104,5 @@ else
 	echo "[INFO] existing package, leaving package.json alone"
 fi
 
-echo "[INFO] package bootstrap complete"
+echo "[INFO] package init complete"
 echo ""

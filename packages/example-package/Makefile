@@ -1,4 +1,4 @@
-# WARNING: this package is auto-generated from a template
+# WARNING: this package is a controlled file generated from a template
 # do not try to make changes in here, they will be overwritten
 
 ROOT=.
@@ -26,17 +26,17 @@ help:
 
 ##	make setup 	- setup package
 ##
-setup: install bootstrap
+setup: install init
 
 ##	make install 	- install dependencies for the package
 ##
 install:
 	@ $(SCRIPTS)/package-install.sh
 
-##	make bootstrap 	- bootstrap package from template
+##	make init 	- init package from template
 ##
-bootstrap: install
-	@ $(ROOT)/package-bootstrap.sh
+init: install
+	@ $(ROOT)/package-init.sh
 
 
 ##

@@ -1,6 +1,6 @@
 
 <!--
-WARNING: this package is auto-generated from a template
+WARNING: this package is a controlled file generated from a template
 do not try to make changes in here, they will be overwritten
 -->
 
@@ -10,7 +10,7 @@ This package is built on top of `@0655-dev/template-package-typescript`, a packa
 
 ## Init
 
-In order to create a new package from the template, copy `package-bootstrap.sh` from an existing package into an empty folder, and run it.  It will attempt to install `@0655-dev/template-package-typescript` and bootstrap a new package from the template.
+In order to create a new package from the template, copy `package-init.sh` from an existing package into an empty folder, and run it.  It will attempt to install `@0655-dev/template-package-typescript` and init a new package from the template.
 
 ## Development
 
@@ -22,7 +22,7 @@ The template package is makefile-driven, all relevant package commands are prese
 
 The template also has _default_ files.  These files are created and written with default content when the package is initialized, but never updated, so you can make changes to these files after they are created.  For example, `package.json` is a _default_ file, so when you create a new package `package.json` is only created once, and then can be customized byyou afterwards.
 
-If you want to reset a default file back to its original state, just delete the file and run the bootstrap again (or `make setup`).
+If you want to reset a default file back to its original state, just delete the file and run the init again (or `make setup`).
 
 ## Customization
 

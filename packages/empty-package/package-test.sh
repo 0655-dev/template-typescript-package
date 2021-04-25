@@ -6,11 +6,11 @@ set -e
 
 rm -rf ./dist && mkdir ./dist;
 
-cp ./package-bootstrap.sh ./dist/;
+cp ./package-init.sh ./dist/;
 
 ( \
 	cd ./dist \
-	&& ./package-bootstrap.sh \
+	&& ./package-init.sh \
 	&& pnpm install --filter ./ --frozen-lockfile=false \
 	&& make test \
 );
