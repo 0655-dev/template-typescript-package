@@ -76,7 +76,7 @@ fi
 # use rsync to fast-sync the template dir with the package dir
 echo "[INFO] copying template to package"
 rsync \
-	--update \
+	--checksum \
 	--recursive \
 	--perms \
 	--itemize-changes \
@@ -88,7 +88,6 @@ echo "[INFO] done"
 # use rsync to fast-sync the default template dir with the package dir
 echo "[INFO] copying template default files to package"
 rsync \
-	--update \
 	--recursive \
 	--perms \
 	--ignore-existing \
