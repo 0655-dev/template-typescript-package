@@ -66,7 +66,7 @@ fi
 # if the package ins't isn't set up, we can't init the package
 if [ ! -d "${TEMPLATE_SRC}" ]; then
 	echo "[INFO] installing template package"
-	pnpm install --save "${TEMPLATE_PACKAGE_NAME}@*" --filter $PACKAGE_ROOT
+	pnpm install --save-dev "${TEMPLATE_PACKAGE_NAME}@*" --filter $PACKAGE_ROOT
 	echo "[INFO] done"
 else
 	echo "[INFO] template src found"
