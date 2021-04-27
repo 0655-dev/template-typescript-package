@@ -1,4 +1,6 @@
 {
+	"__comment": "WARNING: this package is a controlled file generated from a template.  Do not try to make changes in here, they will be overwritten",
+  "extends": "./tsconfig.extras.json",
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
