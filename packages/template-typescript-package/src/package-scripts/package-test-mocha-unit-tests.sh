@@ -26,7 +26,7 @@ XARGS=$PACKAGE_TASKS/xargs-compat.sh
 
 SCRIPT_START=`date +%s`
 
-if [ "$PACKAGE_USE_MOCHA" = false ]; then exit 0; fi
+if [ $PACKAGE_USE_MOCHA != 1 ]; then exit 0; fi
 
 echo ""
 echo "[INFO] running mocha tests for $PACKAGE_NAME"

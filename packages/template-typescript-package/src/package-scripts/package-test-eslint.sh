@@ -19,7 +19,7 @@ source $PACKAGE_CONFIG
 
 SCRIPT_START=`date +%s`
 
-if [ "$PACKAGE_USE_ESLINT" = false ]; then exit 0; fi
+if [ $PACKAGE_USE_ESLINT != 1 ]; then exit 0; fi
 
 if [ -z "$PACKAGE_SRC" ]; then echo "[ERROR] PACKAGE_SRC var is not set"; exit 1; fi
 if [ -z "$PACKAGE_ESLINTRC" ]; then echo "[ERROR] PACKAGE_ESLINTRC var is not set"; exit 1; fi

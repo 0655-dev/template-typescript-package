@@ -31,7 +31,7 @@ _check_env () {
 _check_env xargs cat sed sort;
 
 
-_source_map () {
+_module_map () {
 	local DIR=$(echo $1 | xargs -0 -n1 dirname)
 	local CMD=''
 	{
@@ -40,7 +40,7 @@ _source_map () {
 		do 
 				# Prefix the contents of each .sourcemap file with the path
 				# to the file it came from
-				cat "$dir"/.sourcemap | sed \
+				cat "$dir"/.modulemap | sed \
 					-e '/^[ 	]*$/d' \
 					-e 's/^[ 	]*//' \
 					-e 's/[ 	]*$//' \
@@ -56,6 +56,7 @@ _source_map () {
 			# echo "pattern ${pattern}" 
 			CMD="${CMD} -or \( -type f -path '${pattern}' \)"
 		done
+		CMD="\( ${CMD} \) ! -name .MODULE_HASH"
 		CMD="find ${DIR} ${CMD}"
 		# echo $CMD
 		eval $CMD
@@ -71,8 +72,8 @@ _source_map () {
 # _source_map $1;
 
 
-source_hash () {
-	_source_map $1 | \
+module_hash () {
+	_module_map $1 | \
 	xargs \
 		$MD5  \
 	| \
@@ -80,4 +81,4 @@ source_hash () {
 }
 
 
-# _source_hash $1;
+# _module_hash $1;

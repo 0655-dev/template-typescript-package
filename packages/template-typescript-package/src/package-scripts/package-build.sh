@@ -22,11 +22,6 @@ SCRIPT_START=`date +%s`
 echo ""
 echo "[INFO] starting package build for $PACKAGE_NAME";
 
-if [ -z "$PACKAGE_SRC" ]; then echo "[ERROR] PACKAGE_SRC var is not set"; exit 1; fi
-if [ -z "$PACKAGE_DIST" ]; then echo "[ERROR] PACKAGE_DIST var is not set"; exit 1; fi
-if [ -z "$PACKAGE_SCRIPTS" ]; then echo "[ERROR] PACKAGE_SCRIPTS var is not set"; exit 1; fi
-if [ -z "$PACKAGE_SOURCE_MAP" ]; then echo "[ERROR] PACKAGE_SOURCE_MAP var is not set"; exit 1; fi
-
 _check_env () {
 	for tool in "$@"
 	do
@@ -43,12 +38,6 @@ _check_env pnpx rsync mktemp;
 source $PACKAGE_SCRIPTS/source-hash.sh
 
 echo "[INFO] starting build check"
-
-# SOURCE_HASH_FILE is the name of the source hash to check against
-SOURCE_HASH_FILE=.SOURCE_HASH
-
-# SHOULD_REBUILD is the flag to check if a rebuild is needed
-SHOULD_REBUILD=1
 
 _MAKE_SOURCE_HASH() {
 	echo "[INFO] calculating source hash";
@@ -117,8 +106,7 @@ _COPY_ASSETS () {
 		# --itemize-changes \
 }
 
-_BUILD_EXTRAS () {
-	echo '[INFO] copying extras into build dir'
+_BUILD_SOURCE_HASH_FILE () {
 	echo "$SOURCE_HASH" > $BUILD_DIR/$SOURCE_HASH_FILE
 }
 
@@ -142,23 +130,38 @@ _CLEANUP () {
 	echo ""
 }
 
-_MAKE_SOURCE_HASH
-_CHECK_SOURCE_HASH
 
-if [ $SHOULD_REBUILD == 1 ]
+if [ $PACKAGE_USE_SOURCE_HASH == 1 ]
 then
+	SOURCE_HASH_FILE=.SOURCE_HASH 	# SOURCE_HASH_FILE is the name of the source hash to check against
+	SHOULD_REBUILD=1 	# SHOULD_REBUILD is the flag to check if a rebuild is needed
+	_MAKE_SOURCE_HASH
+	_CHECK_SOURCE_HASH
+	if [ $SHOULD_REBUILD == 1 ]
+	then
+		echo "[INFO] starting build"
+		trap _CLEANUP ERR EXIT
+		_MAKE_BUILD_DIR
+		_COPY_ASSETS
+		_BUILD_TS
+		_BUILD_SOURCE_HASH_FILE
+		_WRITE_BUILD_TO_DIST
+		echo "[INFO] build finished"
+	else
+		echo "[INFO] build is up-to-date, exiting"
+	fi
+else
 	echo "[INFO] starting build"
 	trap _CLEANUP ERR EXIT
 	_MAKE_BUILD_DIR
 	_COPY_ASSETS
 	_BUILD_TS
-	_BUILD_EXTRAS
 	_WRITE_BUILD_TO_DIST
-	SCRIPT_END=`date +%s`
-	SCRIPT_RUNTIME=$((SCRIPT_END-SCRIPT_START))
-	echo "[INFO] build for $PACKAGE_NAME finished in ${SCRIPT_RUNTIME}s"
-	echo ""
-else
-	echo "[INFO] build is up-to-date, exiting"
-	echo ""
+	echo "[INFO] build finished"
 fi
+
+
+SCRIPT_END=`date +%s`
+SCRIPT_RUNTIME=$((SCRIPT_END-SCRIPT_START))
+echo "[INFO] package build for $PACKAGE_NAME finished in ${SCRIPT_RUNTIME}s"
+echo ""

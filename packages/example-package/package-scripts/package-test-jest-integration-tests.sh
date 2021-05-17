@@ -19,7 +19,7 @@ source $PACKAGE_CONFIG
 
 SCRIPT_START=`date +%s`
 
-if [ "$PACKAGE_USE_JEST" = false ]; then exit 0; fi
+if [ $PACKAGE_USE_JEST != 1 ]; then exit 0; fi
 
 echo ""
 echo "[INFO] running jest integration tests for $PACKAGE_NAME"

@@ -16,19 +16,22 @@ PACKAGE_SRC=$PACKAGE_ROOT/src
 PACKAGE_DIST=$PACKAGE_ROOT/dist
 
 PACKAGE_SCRIPTS=$PACKAGE_ROOT/package-scripts
+PACKAGE_MODULES=$PACKAGE_ROOT/node_modules
 PACKAGE_SOURCE_MAP=$PACKAGE_ROOT/.sourcemap
+PACKAGE_MODULE_MAP=$PACKAGE_ROOT/.modulemap
 
+PACKAGE_USE_SOURCE_HASH=1 # this flag is used to enable source hashing for rebuild checks
+PACKAGE_USE_MODULE_HASH=1 # this flag is used to enable module hashing for reinstall checks
 
-
-PACKAGE_USE_MOCHA=true	# this flag is used to enable or disable mocha testing
+PACKAGE_USE_MOCHA=1	# this flag is used to enable or disable mocha testing
 PACKAGE_MOCHA_ARGS=	# this variable can be used to set default parameters to always be passed to mocha 
 MOCHA="${MOCHA:-}" # this variable can be used to pass parameters to mocha at invocation
 
-PACKAGE_USE_JEST=true	# this flag is used to enable or disable jest testing
+PACKAGE_USE_JEST=1	# this flag is used to enable or disable jest testing
 PACKAGE_JEST_ARGS=	# this variable can be used to set default parameters to be passed to jest 
 JEST="${JEST:-}" # this variable can be used to pass parameters to mocha at invocation
 
-PACKAGE_USE_ESLINT=true	# this flag is used to enable or disable eslint testing
+PACKAGE_USE_ESLINT=1	# this flag is used to enable or disable eslint testing
 PACKAGE_ESLINTRC=$PACKAGE_ROOT/.eslintrc.js
 
 source $PACKAGE_EXTRAS

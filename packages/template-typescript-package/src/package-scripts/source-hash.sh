@@ -49,12 +49,14 @@ _source_map () {
 					-e 's|^|'"$dir/"'|'
 		done
 	} | {
-		CMD="find ${DIR} \( -type f -path 3c1190e540f34e4da0282b8497368336 \)"
+		# CMD="find ${DIR} \( -type f -path 3c1190e540f34e4da0282b8497368336 \)"
+		CMD="\( -type f -path 3c1190e540f34e4da0282b8497368336 \)"
 		while read pattern
 		do
 			# echo "pattern ${pattern}" 
 			CMD="${CMD} -or \( -type f -path '${pattern}' \)"
 		done
+		CMD="find ${DIR} ${CMD}"
 		# echo $CMD
 		eval $CMD
 	} |
