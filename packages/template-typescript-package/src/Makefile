@@ -55,6 +55,11 @@ build: setup
 clean:
 	@ $(SCRIPTS)/package-clean.sh
 
+##	make format	- auto-format the source code (using prettier)
+##
+format: setup
+	@ $(SCRIPTS)/package-prettier-format.sh
+
 
 ##
 ##

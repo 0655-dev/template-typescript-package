@@ -34,4 +34,7 @@ JEST="${JEST:-}" # this variable can be used to pass parameters to mocha at invo
 PACKAGE_USE_ESLINT=1	# this flag is used to enable or disable eslint testing
 PACKAGE_ESLINTRC=$PACKAGE_ROOT/.eslintrc.js
 
+PACKAGE_USE_PRETTIER=1 # this flag is used to enable or disable prettier formatting
+PACKAGE_PRETTIERRC=$PACKAGE_ROOT/.prettierrc.js
+
 source $PACKAGE_EXTRAS

@@ -30,3 +30,5 @@ PACKAGE_USE_SOURCE_HASH=1
 # this flag is used to enable module hashing for reinstall checks
 PACKAGE_USE_MODULE_HASH=1
 # PACKAGE_USE_MODULE_HASH=0
+
+# PACKAGE_USE_PRETTIER=0
