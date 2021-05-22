@@ -19,7 +19,7 @@ source $PACKAGE_CONFIG
 
 SCRIPT_START=`date +%s`
 
-if [ $PACKAGE_USE_PRETTIER != 1 ]; then exit 0; fi
+if [ $PACKAGE_USE_AUTOFORMAT != 1 ]; then exit 0; fi
 
 echo ""
 echo "[INFO] running prettier formatting for $PACKAGE_NAME"

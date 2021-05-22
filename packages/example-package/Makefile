@@ -50,6 +50,7 @@ init: install
 ##	make build 	- build the src and the docs
 ##
 build: setup
+	@ $(SCRIPTS)/package-prettier-format.sh
 	@ $(SCRIPTS)/package-build.sh
 
 ##	make clean 	- remove build artifacts from package
@@ -57,10 +58,10 @@ build: setup
 clean:
 	@ $(SCRIPTS)/package-clean.sh
 
-##	make format	- auto-format the source code (using prettier)
+##	make format	- format the source code (using prettier)
 ##
 format: setup
-	@ $(SCRIPTS)/package-prettier-format.sh
+	@ PACKAGE_USE_AUTOFORMAT=1 $(SCRIPTS)/package-prettier-format.sh
 
 
 ##

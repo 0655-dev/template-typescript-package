@@ -31,6 +31,6 @@ PACKAGE_USE_SOURCE_HASH=1
 PACKAGE_USE_MODULE_HASH=1
 # PACKAGE_USE_MODULE_HASH=0
 
-# this flag is used to enable or disable prettier formatting
-PACKAGE_USE_PRETTIER=1
-# PACKAGE_USE_PRETTIER=0
+# this flag is used to enable or disable automatic prettier formatting on builds
+PACKAGE_USE_AUTOFORMAT=1
+# PACKAGE_USE_AUTOFORMAT=0
