@@ -1,1 +1,0 @@
-# template-typescript-package

@@ -10,7 +10,7 @@ importers:
 
   packages/example-package:
     specifiers:
-      '@0655-dev/template-typescript-package': '*'
+      '@0655-dev/typescript-package-template': '*'
       '@types/jest': 26.0.19
       '@typescript-eslint/eslint-plugin': 4.1.0
       '@typescript-eslint/parser': 4.1.0
@@ -20,7 +20,7 @@ importers:
       prettier: 2.3.0
       typescript: 4.2.4
     devDependencies:
-      '@0655-dev/template-typescript-package': link:../template-typescript-package
+      '@0655-dev/typescript-package-template': link:../typescript-package-template
       '@types/jest': 26.0.19
       '@typescript-eslint/eslint-plugin': 4.1.0_637052761c579cfb817aa4c8f9fcf8e9
       '@typescript-eslint/parser': 4.1.0_eslint@7.24.0+typescript@4.2.4
@@ -30,7 +30,7 @@ importers:
       prettier: 2.3.0
       typescript: 4.2.4
 
-  packages/template-typescript-package:
+  packages/typescript-package-template:
     specifiers: {}
 
 packages:

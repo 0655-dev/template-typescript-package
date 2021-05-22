@@ -17,7 +17,7 @@ PACKAGE_MANIFEST=$PACKAGE_ROOT/package.json
 PACKAGE_SEED="{\\n\\t\"name\": \"\",\\n\\t\"version\": \"1.0.0\",\\n\\t\"private\": true }"
 NODE_MODULES=$PACKAGE_ROOT/node_modules
 
-TEMPLATE_PACKAGE_NAME="@0655-dev/template-typescript-package"
+TEMPLATE_PACKAGE_NAME="@0655-dev/typescript-package-template"
 TEMPLATE_SRC="$NODE_MODULES/$TEMPLATE_PACKAGE_NAME/src"
 TEMPLATE_SRC_DEFAULT="$NODE_MODULES/$TEMPLATE_PACKAGE_NAME/src-default"
 

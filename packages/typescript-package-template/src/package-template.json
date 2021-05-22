@@ -9,7 +9,7 @@
 	"dependencies": {
 	},
 	"devDependencies": {
-		"@0655-dev/template-typescript-package": "*",
+		"@0655-dev/typescript-package-template": "*",
     "@types/jest": "26.0.19",
 		"@typescript-eslint/eslint-plugin": "4.1.0",
 		"@typescript-eslint/parser": "4.1.0",
