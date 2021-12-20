@@ -8,6 +8,5 @@ module.exports = {
 	plugins: [],
 	extends: [],
 	rules: {
-		'@typescript-eslint/no-empty-function': 'warn',
 	},
 };

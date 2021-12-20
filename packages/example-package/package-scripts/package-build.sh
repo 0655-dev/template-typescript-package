@@ -116,10 +116,10 @@ _WRITE_BUILD_TO_DIST () {
 	# 'temp' is excluded to work around an issue with local temp dirs getting used
 	echo "[INFO] writing build to dist"
 	rsync \
-		--update \
 		--recursive \
 		--exclude='temp' \
 		--delete \
+		--prune-empty-dirs \
 		$BUILD_DIR/ \
 		$PACKAGE_DIST
 		# --itemize-changes \
@@ -130,22 +130,44 @@ _CLEANUP () {
 	echo ""
 }
 
+_PRE_HASH_HOOK () {
+	eval $PACKAGE_PRE_HASH_HOOK
+}
+
+_POST_HASH_HOOK () {
+	eval $PACKAGE_POST_HASH_HOOK
+}
+
+
+_PRE_BUILD_HOOK () {
+	eval $PACKAGE_PRE_BUILD_HOOK
+}
+
+_POST_BUILD_HOOK () {
+	eval $PACKAGE_POST_BUILD_HOOK
+}
+
+
 
 if [ $PACKAGE_USE_SOURCE_HASH == 1 ]
 then
 	SOURCE_HASH_FILE=.SOURCE_HASH 	# SOURCE_HASH_FILE is the name of the source hash to check against
 	SHOULD_REBUILD=1 	# SHOULD_REBUILD is the flag to check if a rebuild is needed
+	_PRE_HASH_HOOK
 	_MAKE_SOURCE_HASH
 	_CHECK_SOURCE_HASH
+	_POST_HASH_HOOK
 	if [ $SHOULD_REBUILD == 1 ]
 	then
 		echo "[INFO] starting build"
 		trap _CLEANUP ERR EXIT
+		_PRE_BUILD_HOOK
 		_MAKE_BUILD_DIR
 		_COPY_ASSETS
 		_BUILD_TS
 		_BUILD_SOURCE_HASH_FILE
 		_WRITE_BUILD_TO_DIST
+		_POST_BUILD_HOOK
 		echo "[INFO] build finished"
 	else
 		echo "[INFO] build is up-to-date, exiting"

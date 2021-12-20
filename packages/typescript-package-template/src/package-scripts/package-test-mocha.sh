@@ -29,7 +29,7 @@ SCRIPT_START=`date +%s`
 if [ $PACKAGE_USE_MOCHA != 1 ]; then exit 0; fi
 
 echo ""
-echo "[INFO] running mocha integration tests for $PACKAGE_NAME"
+echo "[INFO] running mocha tests for $PACKAGE_NAME"
 
 
 ( \
@@ -52,5 +52,5 @@ echo "[INFO] running mocha integration tests for $PACKAGE_NAME"
 SCRIPT_END=`date +%s`
 SCRIPT_RUNTIME=$((SCRIPT_END-SCRIPT_START))
 
-echo "[INFO] mocha integration tests for $PACKAGE_NAME finished in ${SCRIPT_RUNTIME}s"
+echo "[INFO] mocha unit tests for $PACKAGE_NAME finished in ${SCRIPT_RUNTIME}s"
 echo ""

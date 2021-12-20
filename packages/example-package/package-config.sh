@@ -27,14 +27,19 @@ PACKAGE_USE_MOCHA=1	# this flag is used to enable or disable mocha testing
 PACKAGE_MOCHA_ARGS=	# this variable can be used to set default parameters to always be passed to mocha 
 MOCHA="${MOCHA:-}" # this variable can be used to pass parameters to mocha at invocation
 
-PACKAGE_USE_JEST=1	# this flag is used to enable or disable jest testing
-PACKAGE_JEST_ARGS=	# this variable can be used to set default parameters to be passed to jest 
-JEST="${JEST:-}" # this variable can be used to pass parameters to mocha at invocation
 
 PACKAGE_USE_ESLINT=1	# this flag is used to enable or disable eslint testing
 PACKAGE_ESLINTRC=$PACKAGE_ROOT/.eslintrc.js
 
-PACKAGE_USE_AUTOFORMAT=1 # this flag is used to enable or disable automatic prettier formatting on builds
 PACKAGE_PRETTIERRC=$PACKAGE_ROOT/.prettierrc.js
+
+# a hook for executing custom scripts before the source check
+PACKAGE_PRE_HASH_HOOK=""
+# a hook for executing custom scripts after the source check
+PACKAGE_POST_HASH_HOOK=""
+# a hook for executing custom scripts before the build
+PACKAGE_PRE_BUILD_HOOK=""
+# a hook for executing custom scripts after the build
+PACKAGE_POST_BUILD_HOOK=""
 
 source $PACKAGE_EXTRAS

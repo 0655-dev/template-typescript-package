@@ -12,13 +12,6 @@ PACKAGE_USE_MOCHA=1
 # this variable can be used to set default parameters to always be passed to mocha 
 # PACKAGE_MOCHA_ARGS=
 
-# this flag is used to enable or disable jest testing
-PACKAGE_USE_JEST=1
-# PACKAGE_USE_JEST=0
-
-# this variable can be used to set default parameters to be passed to jest 
-# PACKAGE_JEST_ARGS=
-
 # this flag is used to enable or disable eslint testing
 PACKAGE_USE_ESLINT=1
 # PACKAGE_USE_ESLINT=0
@@ -31,4 +24,5 @@ PACKAGE_USE_SOURCE_HASH=1
 PACKAGE_USE_MODULE_HASH=1
 # PACKAGE_USE_MODULE_HASH=0
 
-# PACKAGE_USE_PRETTIER=0
+# you can use the pre-hash hook to set up an auto-format
+PACKAGE_PRE_HASH_HOOK="make format"

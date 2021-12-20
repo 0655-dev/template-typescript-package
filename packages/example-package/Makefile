@@ -50,7 +50,6 @@ init: install
 ##	make build 	- build the src and the docs
 ##
 build: setup
-	@ $(SCRIPTS)/package-prettier-format.sh
 	@ $(SCRIPTS)/package-build.sh
 
 ##	make clean 	- remove build artifacts from package
@@ -61,7 +60,7 @@ clean:
 ##	make format	- format the source code (using prettier)
 ##
 format: setup
-	@ PACKAGE_USE_AUTOFORMAT=1 $(SCRIPTS)/package-prettier-format.sh
+	@ $(SCRIPTS)/package-prettier-format.sh
 
 
 ##
@@ -75,44 +74,8 @@ format: setup
 test-typescript: setup build
 	@ $(SCRIPTS)/package-test-typescript.sh
 
-##	make test-unit-tests 	- run unit tests
-##
-test-unit-tests: \
-	test-mocha-unit-tests \
-	test-jest-unit-tests
-
-
-test-mocha-unit-tests: setup build
-	@ MOCHA="$(MOCHA)" $(SCRIPTS)/package-test-mocha-unit-tests.sh
-
-test-jest-unit-tests: setup build
-	@ JEST="$(JEST)" $(SCRIPTS)/package-test-jest-unit-tests.sh
-
-##	make test-integration-tests 	- run integration test cases
-##
-test-integration-tests: \
-	test-mocha-integration-tests \
-	test-jest-integration-tests
-
-test-mocha-integration-tests: setup build
-	@ MOCHA="$(MOCHA)" $(SCRIPTS)/package-test-mocha-integration-tests.sh
-
-test-jest-integration-tests: setup build
-	@ JEST="$(JEST)" $(SCRIPTS)/package-test-jest-integration-tests.sh
-
-
-##	make test-mocha 	- run the mocha test cases (if using mocha)
-##
-test-mocha: \
-	test-mocha-unit-tests \
-	test-mocha-integration-tests
-
-##	make test-jest 	- run the jest test cases (if using jest)
-##
-test-jest: \
-	test-jest-unit-tests \
-	test-jest-integration-tests
-
+test-mocha: setup build
+	@ MOCHA="$(MOCHA)" $(SCRIPTS)/package-test-mocha.sh
 
 ##	make test-eslint 	- run the eslint test cases
 ##
@@ -124,8 +87,7 @@ test-eslint: setup build
 test: \
 	test-typescript \
 	test-eslint \
-	test-unit-tests \
-	test-integration-tests
+	test-mocha
 
 ##
 ##
