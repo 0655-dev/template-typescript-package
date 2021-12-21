@@ -14,7 +14,7 @@ set -euf -o pipefail
 
 # import other vars from the package config
 PACKAGE_ROOT=.
-PACKAGE_CONFIG=$PACKAGE_ROOT/package-config.sh
+PACKAGE_CONFIG=$PACKAGE_ROOT/package-scripts/package-config.base.sh
 source $PACKAGE_CONFIG
 
 pnpm publish

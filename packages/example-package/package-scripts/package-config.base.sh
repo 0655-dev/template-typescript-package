@@ -7,18 +7,19 @@
 
 # the current directory is assumed to be the package root by all scripts
 PACKAGE_ROOT=.
+PACKAGE_SCRIPTS=$PACKAGE_ROOT/package-scripts
 PACKAGE_NAME=package
-PACKAGE_CONFIG=$PACKAGE_ROOT/package-config.sh
-PACKAGE_EXTRAS=$PACKAGE_ROOT/package-config.extras.sh
+PACKAGE_CONFIG=$PACKAGE_SCRIPTS/package-config.base.sh
+PACKAGE_EXTRAS=$PACKAGE_SCRIPTS/package-config.extras.sh
 
 
 PACKAGE_SRC=$PACKAGE_ROOT/src
 PACKAGE_DIST=$PACKAGE_ROOT/dist
 
-PACKAGE_SCRIPTS=$PACKAGE_ROOT/package-scripts
+PACKAGE_SCRIPTS=$PACKAGE_ROOT/package-scripts/tasks
 PACKAGE_MODULES=$PACKAGE_ROOT/node_modules
-PACKAGE_SOURCE_MAP=$PACKAGE_ROOT/.sourcemap
-PACKAGE_MODULE_MAP=$PACKAGE_ROOT/.modulemap
+PACKAGE_SOURCE_MAP=$PACKAGE_ROOT/package-scripts/.sourcemap
+PACKAGE_MODULE_MAP=$PACKAGE_ROOT/package-scripts/.modulemap
 
 PACKAGE_USE_SOURCE_HASH=1 # this flag is used to enable source hashing for rebuild checks
 PACKAGE_USE_MODULE_HASH=1 # this flag is used to enable module hashing for reinstall checks

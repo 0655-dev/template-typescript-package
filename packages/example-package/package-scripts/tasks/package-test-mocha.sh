@@ -5,7 +5,7 @@
 
 #
 # turn this on to debug script
-# set -x
+set -x
 
 #
 # abort on error
@@ -14,13 +14,13 @@ set -euf -o pipefail
 
 # import other vars from the package config
 PACKAGE_ROOT=.
-PACKAGE_CONFIG=$PACKAGE_ROOT/package-config.sh
+PACKAGE_CONFIG=$PACKAGE_ROOT/package-scripts/package-config.base.sh
 source $PACKAGE_CONFIG
 
 PACKAGE_ROOT=.
 PACKAGE_SRC=$PACKAGE_ROOT/src
 PACKAGE_DIST=$PACKAGE_ROOT/dist
-PACKAGE_TASKS=$PACKAGE_ROOT/package-scripts
+PACKAGE_TASKS=$PACKAGE_ROOT/package-scripts/tasks
 
 XARGS=$PACKAGE_TASKS/xargs-compat.sh
 

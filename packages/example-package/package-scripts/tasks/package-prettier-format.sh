@@ -14,7 +14,18 @@ set -euf -o pipefail
 
 # import other vars from the package config
 PACKAGE_ROOT=.
-PACKAGE_CONFIG=$PACKAGE_ROOT/package-config.sh
+PACKAGE_CONFIG=$PACKAGE_ROOT/package-scripts/package-config.base.sh
 source $PACKAGE_CONFIG
 
-pnpm publish --dry-run --no-git-checks
+SCRIPT_START=`date +%s`
+
+echo ""
+echo "[INFO] running prettier formatting for $PACKAGE_NAME"
+
+pnpx prettier --write $PACKAGE_SRC
+
+SCRIPT_END=`date +%s`
+SCRIPT_RUNTIME=$((SCRIPT_END-SCRIPT_START))
+
+echo "[INFO]  prettier formatting for $PACKAGE_NAME finished in ${SCRIPT_RUNTIME}s"
+echo ""

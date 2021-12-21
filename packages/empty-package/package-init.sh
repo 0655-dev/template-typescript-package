@@ -98,8 +98,8 @@ echo "[INFO] done"
 
 # if this is a new package, then replace the seed manifest with the template manifest
 if [ $IS_NEW_PACKAGE = true ]; then
-	echo "[INFO] replacing pacakage.json with template"
-	cp $PACKAGE_ROOT/package-template.json $PACKAGE_ROOT/package.json
+	echo "[INFO] replacing package.json with template"
+	cp $PACKAGE_ROOT/package-scripts/package-template.json $PACKAGE_ROOT/package.json
 	echo "[INFO] done"
 else
 	echo "[INFO] existing package, leaving package.json alone"
