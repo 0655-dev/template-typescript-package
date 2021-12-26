@@ -4,4 +4,4 @@
 // if you want to customize eslint for this package, 
 // add rules to ./package-scripts/.prettier.extras.js file inste
 
-module.exports = require('./package-scripts/.prettierrc.base.js');
+module.exports = require('./package-scripts/config-base/.prettierrc.js');

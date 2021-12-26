@@ -1,5 +1,5 @@
 
-const extras = require('./.prettierrc.extras.js');
+const extras = require('../config-extras/.prettierrc.js');
 
 module.exports = {
 	useTabs: true,
@@ -9,7 +9,7 @@ module.exports = {
 	jsxSingleQuote: false,
 	trailingComma: 'es5',
 	bracketSpacing: true,
-	jsxBracketSameLine: false,
+	bracketSameLine: false,
 	arrowParens: 'always',
 	...extras,
 };

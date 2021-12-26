@@ -5,7 +5,7 @@
 
 #
 # turn this on to debug script
-set -x
+# set -x
 
 #
 # abort on error
@@ -14,7 +14,7 @@ set -euf -o pipefail
 
 # import other vars from the package config
 PACKAGE_ROOT=.
-PACKAGE_CONFIG=$PACKAGE_ROOT/package-scripts/package-config.base.sh
+PACKAGE_CONFIG=$PACKAGE_ROOT/package-scripts/config-base/package-config.sh
 source $PACKAGE_CONFIG
 
 PACKAGE_ROOT=.

@@ -4,8 +4,8 @@
 ROOT=.
 SCRIPTS=./package-scripts
 
-MAKEFILE_BASE=Makefile.base.mk
-MAKEFILE_EXTRA=Makefile.extras.mk
+MAKEFILE_BASE=$(SCRIPTS)/config-base/Makefile.mk
+MAKEFILE_EXTRA=$(SCRIPTS)/config-extras/Makefile.mk
 
 ##
 ##
@@ -18,7 +18,7 @@ default: help
 ##	make help 	- display the help
 ##
 help:
-	@ grep -h "^##.*"  $(SCRIPTS)/$(MAKEFILE_BASE) $(SCRIPTS)/$(MAKEFILE_EXTRA)
+	@ grep -h "^##.*"  $(MAKEFILE_BASE) $(MAKEFILE_EXTRA)
 
 
 ##
@@ -108,4 +108,4 @@ publish: setup build
 
 ##
 
-include $(SCRIPTS)/$(MAKEFILE_EXTRA)
+include $(MAKEFILE_EXTRA)

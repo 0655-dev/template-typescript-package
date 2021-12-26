@@ -1,4 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# WARNING: this package is a controlled file generated from a template
+# do not try to make changes in here, they will be overwritten
+
+#
+# turn this on to debug script
+# set -x
 
 #
 # abort on error

@@ -1,5 +1,5 @@
 
-const extras = require('./.prettierrc.extras.js');
+const extras = require('../config-extras/.prettierrc.js');
 
 module.exports = {
 	useTabs: true,

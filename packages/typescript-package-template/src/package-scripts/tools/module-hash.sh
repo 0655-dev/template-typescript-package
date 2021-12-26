@@ -14,9 +14,9 @@ set -euf -o pipefail
 
 # import other vars from the package config
 PACKAGE_ROOT=.
-PACKAGE_TASKS=$PACKAGE_ROOT/package-scripts/tasks
+PACKAGE_TOOLS=$PACKAGE_ROOT/package-scripts/tools
 
-MD5=$PACKAGE_TASKS/md5sum-compat.sh
+MD5=$PACKAGE_TOOLS/md5sum-compat.sh
 
 _check_env () {
 	for tool in "$@"

@@ -3,12 +3,12 @@
 
 // if you want to customize eslint for this package, 
 // add rules to this extras file instead
-const extras = require('./.eslintrc.extras.js');
+const extras = require('../config-extras/.eslintrc.js');
 
 module.exports = {
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
-		project: require.resolve('../tsconfig.json'),
+		project: require.resolve('../../tsconfig.json'),
 	},
 	plugins: [
 		'@typescript-eslint/eslint-plugin',

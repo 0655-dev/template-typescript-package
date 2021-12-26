@@ -4,4 +4,4 @@
 // if you want to customize eslint for this package, 
 // add rules to ./package-scripts/.eslintrc.extras.js file instead
 
-module.exports = require('./package-scripts/.eslintrc.base.js');
+module.exports = require('./package-scripts/config-base/.eslintrc.js');
