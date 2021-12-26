@@ -15,6 +15,7 @@ set -euf -o pipefail
 # import other vars from the package config
 PACKAGE_ROOT=.
 PACKAGE_CONFIG=$PACKAGE_ROOT/package-scripts/config-base/package-config.sh
+PACKAGE_TOOLS=$PACKAGE_ROOT/package-scripts/tools
 source $PACKAGE_CONFIG
 
 SCRIPT_START=`date +%s`
@@ -35,7 +36,7 @@ _check_env () {
 _check_env pnpx rsync mktemp;
 
 # load source_hash function
-source $PACKAGE_SCRIPTS/source-hash.sh
+source $PACKAGE_TOOLS/source-hash.sh
 
 echo "[INFO] starting build check"
 

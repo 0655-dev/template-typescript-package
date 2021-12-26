@@ -20,9 +20,9 @@ source $PACKAGE_CONFIG
 PACKAGE_ROOT=.
 PACKAGE_SRC=$PACKAGE_ROOT/src
 PACKAGE_DIST=$PACKAGE_ROOT/dist
-PACKAGE_TASKS=$PACKAGE_ROOT/package-scripts/tasks
+PACKAGE_TOOLS=$PACKAGE_ROOT/package-scripts/tools
 
-XARGS=$PACKAGE_TASKS/xargs-compat.sh
+XARGS=$PACKAGE_TOOLS/xargs-compat.sh
 
 SCRIPT_START=`date +%s`
 

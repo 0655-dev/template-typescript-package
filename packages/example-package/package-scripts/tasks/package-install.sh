@@ -15,7 +15,11 @@ set -euf -o pipefail
 # import other vars from the package config
 PACKAGE_ROOT=.
 PACKAGE_CONFIG=$PACKAGE_ROOT/package-scripts/config-base/package-config.sh
+PACKAGE_TOOLS=$PACKAGE_ROOT/package-scripts/tools
+
+# load config
 source $PACKAGE_CONFIG
+
 
 SCRIPT_START=`date +%s`
 
@@ -23,7 +27,7 @@ echo ""
 echo "[INFO] starting install for $PACKAGE_NAME";
 
 # load module_hash function
-source $PACKAGE_SCRIPTS/module-hash.sh
+source $PACKAGE_TOOLS/module-hash.sh
 
 _check_env () {
 	for tool in "$@"
