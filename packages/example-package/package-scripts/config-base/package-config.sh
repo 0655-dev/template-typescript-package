@@ -18,8 +18,8 @@ PACKAGE_DIST=$PACKAGE_ROOT/dist
 
 PACKAGE_SCRIPTS=$PACKAGE_ROOT/package-scripts/tasks
 PACKAGE_MODULES=$PACKAGE_ROOT/node_modules
-PACKAGE_SOURCE_MAP=$PACKAGE_ROOT/package-scripts/config-base/.sourcemap
-PACKAGE_MODULE_MAP=$PACKAGE_ROOT/package-scripts/config-base/.modulemap
+PACKAGE_SOURCE_MAP=$PACKAGE_ROOT/.sourcemap
+PACKAGE_MODULE_MAP=$PACKAGE_ROOT/.modulemap
 
 PACKAGE_USE_SOURCE_HASH=1 # this flag is used to enable source hashing for rebuild checks
 PACKAGE_USE_MODULE_HASH=1 # this flag is used to enable module hashing for reinstall checks

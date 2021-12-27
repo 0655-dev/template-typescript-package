@@ -2,7 +2,8 @@
 // do not try to make changes in here, they will be overwritten
 
 // if you want to customize eslint for this package, 
-// add rules to this extras file instead
+// add rules to config-extras instead
+
 const extras = require('../config-extras/.eslintrc.js');
 
 module.exports = {

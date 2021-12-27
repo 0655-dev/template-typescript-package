@@ -1,4 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# WARNING: this package is a controlled file generated from a template
+# do not try to make changes in here, they will be overwritten
+
+#
+# turn this on to debug script
+# set -x
+
 stdin=$(cat <&0)
 if [[ $1 == "-r" ]] || [[ $1 == "--no-run-if-empty" ]]
 then
