@@ -163,6 +163,7 @@ then
 		echo "[INFO] starting build"
 		trap _CLEANUP ERR EXIT
 		_PRE_BUILD_HOOK
+		_MAKE_SOURCE_HASH # we rebuild the source hash after the pre-build hook, in case the source was changed
 		_MAKE_BUILD_DIR
 		_COPY_ASSETS
 		_BUILD_TS

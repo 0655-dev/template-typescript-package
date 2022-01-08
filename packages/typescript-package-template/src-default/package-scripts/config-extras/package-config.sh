@@ -24,5 +24,5 @@ PACKAGE_USE_SOURCE_HASH=1
 PACKAGE_USE_MODULE_HASH=1
 # PACKAGE_USE_MODULE_HASH=0
 
-# you can use the pre-hash hook to set up an auto-format
-PACKAGE_PRE_HASH_HOOK="make format"
+# you can use the pre-build hook to run auto-formatting (prettier)
+PACKAGE_PRE_BUILD_HOOK="make format"

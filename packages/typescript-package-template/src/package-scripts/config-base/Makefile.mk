@@ -31,10 +31,6 @@ help:
 ##	-----------------
 ##
 
-##	make setup 	- setup package
-##
-setup: install init
-
 ##	make install 	- install dependencies for the package
 ##
 install:
@@ -42,7 +38,7 @@ install:
 
 ##	make init 	- init package from template
 ##
-init: install
+init:
 	@ $(ROOT)/package-init.sh
 
 
@@ -54,7 +50,7 @@ init: install
 
 ##	make build 	- build the src and the docs
 ##
-build: setup
+build: init
 	@ $(SCRIPTS)/tasks/package-build.sh
 
 ##	make clean 	- remove build artifacts from package
@@ -64,7 +60,7 @@ clean:
 
 ##	make format	- format the source code (using prettier)
 ##
-format: setup
+format: init
 	@ $(SCRIPTS)/tasks/package-prettier-format.sh
 
 
@@ -76,15 +72,15 @@ format: setup
 
 ##	make test-typescript 	- run the typescript test cases
 ##
-test-typescript: setup build
+test-typescript: init build
 	@ $(SCRIPTS)/tasks/package-test-typescript.sh
 
-test-mocha: setup build
+test-mocha: init build
 	@ MOCHA="$(MOCHA)" $(SCRIPTS)/tasks/package-test-mocha.sh
 
 ##	make test-eslint 	- run the eslint test cases
 ##
-test-eslint: setup build
+test-eslint: init build
 	@ $(SCRIPTS)/tasks/package-test-eslint.sh
 
 ##	make test 	- run all tests
@@ -102,12 +98,12 @@ test: \
 
 ##	make publish-check 	- dry run publish - show what files will be published
 ##
-publish-check: setup build
+publish-check: init build
 	@ $(SCRIPTS)/tasks/package-check-publish.sh
 
 ##	make publish 	- publish the package
 ##
-publish: setup build
+publish: init build
 	@ $(SCRIPTS)/tasks/package-publish.sh
 
 ##
