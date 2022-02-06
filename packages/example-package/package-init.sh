@@ -96,14 +96,17 @@ rsync \
 	$PACKAGE_ROOT
 echo "[INFO] done"
 
-# if this is a new package, then replace the seed manifest with the template manifest
-if [ $IS_NEW_PACKAGE = true ]; then
-	echo "[INFO] replacing package.json with template"
-	cp $PACKAGE_ROOT/package-scripts/package-template.json $PACKAGE_ROOT/package.json
-	echo "[INFO] done"
-else
-	echo "[INFO] existing package, leaving package.json alone"
-fi
+
+
+
+echo "[INFO] merging package templates into package.json"
+MERGED_MANIFEST="$(node $PACKAGE_ROOT/package-scripts/tools/merge-json.js \
+	$PACKAGE_ROOT/package-scripts/config-base/package-template.defaults.json \
+	$PACKAGE_ROOT/package.json \
+	$PACKAGE_ROOT/package-scripts/config-base/package-template.overrides.json \
+)"
+echo -e "$MERGED_MANIFEST" > $PACKAGE_MANIFEST
+echo "[INFO] done"
 
 echo "[INFO] package init complete"
 echo ""

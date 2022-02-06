@@ -1,11 +1,4 @@
 {
-	"name": "",
-	"version": "1.0.0",
-	"private": true,
-	"files": [
-		"dist"
-	],
-	"main": "dist/index.js",
 	"dependencies": {
 	},
 	"devDependencies": {
@@ -21,7 +14,7 @@
 	"scripts": {
 		"setup": "make setup",
 		"build": "make build",
-		"test": "make test MOCHA=\"$MOCHA\"",
+		"test": "make test",
 		"clean": "make clean"
 	}
 }
